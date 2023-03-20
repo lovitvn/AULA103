@@ -18,5 +18,19 @@ classifier = ml5.imageClassifier('https://storage.googleapis.com/tm-model/NHv4mt
 
  camera=document.getElementById("camera")
 function modelLoaded(){
-  console.log("the modelou was carregated bacause me knows engreis")
+  console.log("the modelou was carregated beicalse me fruenti om engreis")
+}
+function check(){
+  img=document.getElementById("captured_image")
+  classifier.classify(img,gotresult)
+}
+function gotresult(error,result){
+  if (error){
+    console.error(error)
+  }
+  else{
+    console.log(result)
+    document.getElementById("resultobna").innerHTML=result[0].label
+    document.getElementById("resulttobac").innerHTML=result[0].confidence.toFixed(2)
+  }
 }
